@@ -1,0 +1,783 @@
+{
+  "name": "Marketing Tags",
+  "client_id": "https://github.com/wix-private/editor-server/tree/master/wix-html-live-site-data/marketing-tags-api/src/main/proto#public",
+  "memberOf": "All APIs",
+  "category": "core",
+  "mixes": [],
+  "labels": [],
+  "docs":   {
+    "summary": "Add marketing tags to your site",
+    "description": []
+  },
+  "properties": [],
+  "tags": [  {
+    "name": "Marketing Tag",
+    "entity": "_com_wixpress_marketing_tags_api_v1_MarketingTag",
+    "src": "https://github.com/wix-private/editor-server/tree/master/wix-html-live-site-data/marketing-tags-api/src/main/proto/com/wixpress/marketing/tags/api/v1/marketing-tag.proto"
+  }],
+  "relatedGuides": [  {
+    "path": "../guides/marketing-tags/docs/intro.md",
+    "name": "Intro"
+  }],
+  "operations":   [
+        {
+      "name": "Delete Marketing Tag",
+      "methodName": "DeleteMarketingTag",
+      "serviceName": "MarketingTagsService",
+      "tag": "Marketing Tag",
+      "permissions": [],
+      "events": [],
+      "labels": [],
+      "nameParams": [],
+      "params": [      {
+        "in": "BODY",
+        "name": "type",
+        "type": "All APIs.Marketing Tags._com_wixpress_marketing_tags_api_v1_MarketingTag_Type",
+        "doc": "",
+        "required": false
+      }],
+      "ret":       {
+        "type":         {
+          "name": "DeleteMarketingTag",
+          "statusCode": "200",
+          "typeParams": ["All APIs.Marketing Tags._com_wixpress_marketing_tags_api_v1_DeleteMarketingTagResponse"]
+        },
+        "doc": ""
+      },
+      "locations": [],
+      "docs":       {
+        "summary": " Delete a marketing tag\n \n",
+        "description": [],
+        "request": "DELETE",
+        "url": "https://www.wixapis.com/marketing/v1/tags",
+        "links": [],
+        "examples": [        {
+          "title": "Delete Marketing Tag",
+          "body": ["curl -X DELETE \\\n  'https://www.wixapis.com/marketing/v1/tags' \\\n  -H 'Content-Type: application/json' \\\n  -H 'Authorization: <AUTH>' \\\n   --data-raw '{\n                  \"type\": \"GOOGLE_ANALYTICS\"\n                }'"],
+          "response": ["{} "],
+          "type": "curl",
+          "extra": {}
+        }],
+        "extra": {}
+      },
+      "extra":       {
+        "hasRest": true,
+        "rpcRequestName": "DeleteMarketingTagRequest",
+        "rpcResponseName": "DeleteMarketingTagResponse"
+      },
+      "customLabels": [{"id": "maturity-alpha"}]
+    },
+        {
+      "name": "List Marketing Tags",
+      "methodName": "ListMarketingTags",
+      "serviceName": "MarketingTagsService",
+      "tag": "Marketing Tag",
+      "permissions": [],
+      "events": [],
+      "labels": [],
+      "nameParams": [],
+      "params": [      {
+        "in": "QUERY",
+        "name": "filter.byType",
+        "type": "All APIs.Marketing Tags._com_wixpress_marketing_tags_api_v1_MarketingTag_Type",
+        "doc": " filter by tag type\n",
+        "required": false
+      }],
+      "ret":       {
+        "type":         {
+          "name": "ListMarketingTags",
+          "statusCode": "200",
+          "typeParams": ["All APIs.Marketing Tags._com_wixpress_marketing_tags_api_v1_ListMarketingTagsResponse"]
+        },
+        "doc": ""
+      },
+      "locations": [],
+      "docs":       {
+        "summary": " Get all embedded marketing tags\n \n",
+        "description": [],
+        "request": "GET",
+        "url": "https://www.wixapis.com/marketing/v1/tags",
+        "links": [],
+        "examples": [        {
+          "title": "List Marketing Tags",
+          "body": ["curl 'https://www.wixapis.com/marketing/v1/tags' \\\n  -H 'Content-Type: application/json' \\\n  -H 'Authorization: <AUTH>'"],
+          "response": ["{\"tags\": [\n    {\n    \"id\": \"cab0a9e1-b2aa-41b6-991a-9bd40ab15e62\",\n    \"type\": \"FACEBOOK_PIXEL\",\n    \"enabled\": true,\n    \"facebook_pixel\":     {\n      \"domain\": \"some-domain.com\",\n      \"tracking_id\": \"111111111111111\"\n    }\n  },\n    {\n    \"id\": \"994ba324-682c-4d81-abd6-84e4be44ba3c\",\n    \"type\": \"GOOGLE_ANALYTICS\",\n    \"enabled\": true,\n    \"google_analytics\":     {\n      \"domain\": \"some-domain.com\",\n      \"tracking_id\": \"UA-12345678-1\",\n      \"ip_anonymization\": false\n    }\n  }\n]} "],
+          "type": "curl",
+          "extra": {}
+        }],
+        "extra": {}
+      },
+      "extra":       {
+        "hasRest": true,
+        "rpcRequestName": "ListMarketingTagsRequest",
+        "rpcResponseName": "ListMarketingTagsResponse"
+      },
+      "customLabels": [{"id": "maturity-alpha"}]
+    },
+        {
+      "name": "Upsert Marketing Tag",
+      "methodName": "UpsertMarketingTag",
+      "serviceName": "MarketingTagsService",
+      "tag": "Marketing Tag",
+      "permissions": [],
+      "events": [],
+      "labels": [],
+      "nameParams": [],
+      "requiredFields":       [
+        "tag",
+        "tag.params"
+      ],
+      "params": [      {
+        "in": "BODY",
+        "name": "tag",
+        "type": "All APIs.Marketing Tags._com_wixpress_marketing_tags_api_v1_MarketingTag",
+        "doc": "",
+        "required": true
+      }],
+      "ret":       {
+        "type":         {
+          "name": "UpsertMarketingTag",
+          "statusCode": "200",
+          "typeParams": ["All APIs.Marketing Tags._com_wixpress_marketing_tags_api_v1_UpsertMarketingTagResponse"]
+        },
+        "doc": ""
+      },
+      "locations": [],
+      "docs":       {
+        "summary": " Add new embedded marketing tag\n \n",
+        "description": [],
+        "request": "POST",
+        "url": "https://www.wixapis.com/marketing/v1/tags",
+        "links": [],
+        "examples": [        {
+          "title": "Create Google Analytics Tag",
+          "body": ["curl -X POST \\\n  'https://www.wixapis.com/marketing/v1/tags' \\\n  -H 'Content-Type: application/json' \\\n  -H 'Authorization: <AUTH>' \\\n  --data-raw '{\n                \"tag\": {\n                  \"enabled\": true,\n                  \"google_analytics\": {\n                    \"domain\": \"some-domain.com\",\n                    \"tracking_id\": \"UA-12345678-1\",\n                    \"ip_anonymization\": false\n                  }\n                }\n              }'"],
+          "response": ["{\n  \"id\": \"994ba324-682c-4d81-abd6-84e4be44ba3c\",\n  \"type\": \"GOOGLE_ANALYTICS\",\n  \"enabled\": true,\n  \"google_analytics\":   {\n    \"domain\": \"some-domain.com\",\n    \"tracking_id\": \"UA-12345678-1\",\n    \"ip_anonymization\": false\n  }\n} "],
+          "type": "curl",
+          "extra": {}
+        }],
+        "extra": {}
+      },
+      "extra":       {
+        "hasRest": true,
+        "rpcRequestName": "UpsertMarketingTagRequest",
+        "rpcResponseName": "UpsertMarketingTagResponse"
+      },
+      "customLabels": [{"id": "maturity-alpha"}]
+    }
+  ],
+  "events":   [
+        {
+      "type": "_com_wixpress_marketing_tags_api_v1_MarketingTagCreatedDomainEvent",
+      "name": "Marketing Tag Created Webhook",
+      "docs":       {
+        "summary": " triggered when a tag is created\n",
+        "src": "https://github.com/wix-private/editor-server/tree/master/wix-html-live-site-data/marketing-tags-api/src/main/proto/com/wixpress/marketing/tags/api/v1/marketing-tags-service.proto"
+      },
+      "topic": "domain_events_wix.marketing.v1.tag",
+      "tag": "Marketing Tag",
+      "permissions": [],
+      "customLabels": [{"id": "maturity-alpha"}],
+      "eventType": "wix.marketing.v1.tag_created",
+      "extra": {"isDomainEvent": true}
+    },
+        {
+      "type": "_com_wixpress_marketing_tags_api_v1_MarketingTagUpdatedDomainEvent",
+      "name": "Marketing Tag Updated Webhook",
+      "docs":       {
+        "summary": " triggered when a tag is updated\n",
+        "src": "https://github.com/wix-private/editor-server/tree/master/wix-html-live-site-data/marketing-tags-api/src/main/proto/com/wixpress/marketing/tags/api/v1/marketing-tags-service.proto"
+      },
+      "topic": "domain_events_wix.marketing.v1.tag",
+      "tag": "Marketing Tag",
+      "permissions": [],
+      "customLabels": [{"id": "maturity-alpha"}],
+      "eventType": "wix.marketing.v1.tag_updated",
+      "extra": {"isDomainEvent": true}
+    },
+        {
+      "type": "_com_wixpress_marketing_tags_api_v1_MarketingTagDeletedDomainEvent",
+      "name": "Marketing Tag Deleted Webhook",
+      "docs":       {
+        "summary": " triggered when a tag is deleted\n",
+        "src": "https://github.com/wix-private/editor-server/tree/master/wix-html-live-site-data/marketing-tags-api/src/main/proto/com/wixpress/marketing/tags/api/v1/marketing-tags-service.proto"
+      },
+      "topic": "domain_events_wix.marketing.v1.tag",
+      "tag": "Marketing Tag",
+      "permissions": [],
+      "customLabels": [{"id": "maturity-alpha"}],
+      "eventType": "wix.marketing.v1.tag_deleted",
+      "extra": {"isDomainEvent": true}
+    }
+  ],
+  "callbacks": [],
+  "messages":   [
+        {
+      "name": "_com_wixpress_marketing_tags_api_v1_MarketingTagCreatedDomainEvent",
+      "displayName": "Marketing Tag Created Domain Event Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "id",
+          "type": "string",
+          "doc": "Unique event ID."
+        },
+                {
+          "name": "entityFqdn",
+          "type": "string",
+          "doc": "Expected `wix.marketing.v1.tag`.\nFully Qualified Domain Name."
+        },
+                {
+          "name": "slug",
+          "type": "string",
+          "doc": "Expected `created`.\nEvent name."
+        },
+                {
+          "name": "createdEvent",
+          "type": "All APIs.Marketing Tags._com_wixpress_marketing_tags_api_v1_MarketingTagEntityCreatedEvent",
+          "doc": "Event Info"
+        },
+                {
+          "name": "entityId",
+          "type": "string",
+          "doc": "MarketingTag ID associated with this event."
+        },
+                {
+          "name": "eventTime",
+          "type": "string",
+          "doc": "Event timestamp."
+        },
+                {
+          "name": "triggeredByAnonymizeRequest",
+          "type": "boolean",
+          "doc": "Whether this event was triggered as a result of a privacy regulation application (e.g., GDPR)."
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_marketing_tags_api_v1_MarketingTagEntityCreatedEvent",
+      "displayName": "Marketing Tag Entity Created Event Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "entity",
+        "type": "All APIs.Marketing Tags._com_wixpress_marketing_tags_api_v1_MarketingTag",
+        "doc": "Event body"
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_marketing_tags_api_v1_MarketingTagUpdatedDomainEvent",
+      "displayName": "Marketing Tag Updated Domain Event Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "id",
+          "type": "string",
+          "doc": "Unique event ID."
+        },
+                {
+          "name": "entityFqdn",
+          "type": "string",
+          "doc": "Expected `wix.marketing.v1.tag`.\nFully Qualified Domain Name."
+        },
+                {
+          "name": "slug",
+          "type": "string",
+          "doc": "Expected `updated`.\nEvent name."
+        },
+                {
+          "name": "updatedEvent",
+          "type": "All APIs.Marketing Tags._com_wixpress_marketing_tags_api_v1_MarketingTagEntityUpdatedEvent",
+          "doc": "Event Info"
+        },
+                {
+          "name": "entityId",
+          "type": "string",
+          "doc": "MarketingTag ID associated with this event."
+        },
+                {
+          "name": "eventTime",
+          "type": "string",
+          "doc": "Event timestamp."
+        },
+                {
+          "name": "triggeredByAnonymizeRequest",
+          "type": "boolean",
+          "doc": "Whether this event was triggered as a result of a privacy regulation application (e.g., GDPR)."
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_marketing_tags_api_v1_MarketingTagEntityUpdatedEvent",
+      "displayName": "Marketing Tag Entity Updated Event Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "currentEntity",
+          "type": "All APIs.Marketing Tags._com_wixpress_marketing_tags_api_v1_MarketingTag",
+          "doc": "Event body"
+        },
+                {
+          "name": "previousEntity",
+          "type": "All APIs.Marketing Tags._com_wixpress_marketing_tags_api_v1_MarketingTag",
+          "doc": "Previous event body, (when relevant)."
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_marketing_tags_api_v1_MarketingTagDeletedDomainEvent",
+      "displayName": "Marketing Tag Deleted Domain Event Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "id",
+          "type": "string",
+          "doc": "Unique event ID."
+        },
+                {
+          "name": "entityFqdn",
+          "type": "string",
+          "doc": "Expected `wix.marketing.v1.tag`.\nFully Qualified Domain Name."
+        },
+                {
+          "name": "slug",
+          "type": "string",
+          "doc": "Expected `deleted`.\nEvent name."
+        },
+                {
+          "name": "deletedEvent",
+          "type": "All APIs.Marketing Tags._com_wixpress_marketing_tags_api_v1_MarketingTagEntityDeletedEvent",
+          "doc": "Event Info"
+        },
+                {
+          "name": "entityId",
+          "type": "string",
+          "doc": "MarketingTag ID associated with this event."
+        },
+                {
+          "name": "eventTime",
+          "type": "string",
+          "doc": "Event timestamp."
+        },
+                {
+          "name": "triggeredByAnonymizeRequest",
+          "type": "boolean",
+          "doc": "Whether this event was triggered as a result of a privacy regulation application (e.g., GDPR)."
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_marketing_tags_api_v1_MarketingTagEntityDeletedEvent",
+      "displayName": "Marketing Tag Entity Deleted Event Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_marketing_tags_api_v1_MarketingTag",
+      "displayName": "Marketing Tag Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": [        {
+          "title": "",
+          "body": ["{\n  \"id\" : \"cab0a9e1-b2aa-41b6-991a-9bd40ab15e62\",\n  \"type\" : \"FACEBOOK_PIXEL\",\n  \"enabled\" : true,\n  \"facebook_pixel\" : {\n    \"domain\" : \"some-domain.com\",\n    \"tracking_id\" : \"111111111111111\"\n  }\n} "],
+          "type": "json",
+          "extra": {}
+        }]
+      },
+      "members":       [
+                {
+          "name": "id",
+          "type": "string",
+          "doc": " generated by server\n",
+          "readOnly": true
+        },
+                {
+          "name": "type",
+          "type": "All APIs.Marketing Tags._com_wixpress_marketing_tags_api_v1_MarketingTag_Type",
+          "doc": " This field maybe useful for js developers.\n Its value corresponds with the key name in the oneof tag params available.\n The field is optional upon tag creation and will be inffered from the given params.\n",
+          "readOnly": true
+        },
+                {
+          "name": "enabled",
+          "type": "boolean",
+          "doc": " this tag will be available in live site only when enabled\n By default it will be true when it's a new tag, otherwise it will keep the existing value\n"
+        },
+                {
+          "name": "params",
+          "type": "All APIs.Marketing Tags._com_wixpress_marketing_tags_api_v1_MarketingTag_params",
+          "doc": ""
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_marketing_tags_api_v1_MarketingTag_params",
+      "displayName": "params Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "googleAds",
+          "type": "All APIs.Marketing Tags._com_wixpress_marketing_tags_api_v1_GoogleAds",
+          "doc": ""
+        },
+                {
+          "name": "googleAnalytics",
+          "type": "All APIs.Marketing Tags._com_wixpress_marketing_tags_api_v1_GoogleAnalytics",
+          "doc": ""
+        },
+                {
+          "name": "yandexMetrica",
+          "type": "All APIs.Marketing Tags._com_wixpress_marketing_tags_api_v1_YandexMetrica",
+          "doc": ""
+        },
+                {
+          "name": "facebookPixel",
+          "type": "All APIs.Marketing Tags._com_wixpress_marketing_tags_api_v1_FacebookPixel",
+          "doc": ""
+        },
+                {
+          "name": "googleTagManager",
+          "type": "All APIs.Marketing Tags._com_wixpress_marketing_tags_api_v1_GoogleTagManager",
+          "doc": ""
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": [],
+      "oneOf": true
+    },
+        {
+      "name": "_com_wixpress_marketing_tags_api_v1_GoogleAnalytics",
+      "displayName": "Google Analytics Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "domain",
+          "type": "string",
+          "doc": ""
+        },
+                {
+          "name": "trackingId",
+          "type": "string",
+          "doc": ""
+        },
+                {
+          "name": "ipAnonymization",
+          "type": "boolean",
+          "doc": ""
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_marketing_tags_api_v1_GoogleAds",
+      "displayName": "Google Ads Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "domain",
+          "type": "string",
+          "doc": ""
+        },
+                {
+          "name": "trackingId",
+          "type": "string",
+          "doc": ""
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_marketing_tags_api_v1_FacebookPixel",
+      "displayName": "Facebook Pixel Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "domain",
+          "type": "string",
+          "doc": ""
+        },
+                {
+          "name": "trackingId",
+          "type": "string",
+          "doc": ""
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_marketing_tags_api_v1_YandexMetrica",
+      "displayName": "Yandex Metrica Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "domain",
+          "type": "string",
+          "doc": ""
+        },
+                {
+          "name": "trackingId",
+          "type": "string",
+          "doc": ""
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_marketing_tags_api_v1_GoogleTagManager",
+      "displayName": "Google Tag Manager Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "domain",
+          "type": "string",
+          "doc": ""
+        },
+                {
+          "name": "trackingId",
+          "type": "string",
+          "doc": ""
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_marketing_tags_api_v1_UpsertMarketingTagRequest",
+      "displayName": "Upsert Marketing Tag Request Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "tag",
+        "type": "All APIs.Marketing Tags._com_wixpress_marketing_tags_api_v1_MarketingTag",
+        "doc": ""
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_marketing_tags_api_v1_UpsertMarketingTagResponse",
+      "displayName": "Upsert Marketing Tag Response Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "tag",
+        "type": "All APIs.Marketing Tags._com_wixpress_marketing_tags_api_v1_MarketingTag",
+        "doc": " newly created marketing tag\n"
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_marketing_tags_api_v1_ListMarketingTagsRequest_Filter",
+      "displayName": "Filter Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "byType",
+        "type": "All APIs.Marketing Tags._com_wixpress_marketing_tags_api_v1_MarketingTag_Type",
+        "doc": " filter by tag type\n"
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_marketing_tags_api_v1_ListMarketingTagsRequest",
+      "displayName": "List Marketing Tags Request Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "filter",
+        "type": "All APIs.Marketing Tags._com_wixpress_marketing_tags_api_v1_ListMarketingTagsRequest_Filter",
+        "doc": " optional filter\n"
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_marketing_tags_api_v1_ListMarketingTagsResponse",
+      "displayName": "List Marketing Tags Response Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "tags",
+        "type":         {
+          "name": "array",
+          "typeParams": ["All APIs.Marketing Tags._com_wixpress_marketing_tags_api_v1_MarketingTag"]
+        },
+        "doc": " list of marketing tags in the site\n"
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_marketing_tags_api_v1_DeleteMarketingTagRequest",
+      "displayName": "Delete Marketing Tag Request Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "type",
+        "type": "All APIs.Marketing Tags._com_wixpress_marketing_tags_api_v1_MarketingTag_Type",
+        "doc": ""
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_marketing_tags_api_v1_DeleteMarketingTagResponse",
+      "displayName": "Delete Marketing Tag Response Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_marketing_tags_api_v1_MarketingTag_Type",
+      "displayName": "Type Object",
+      "locations": [],
+      "docs":       {
+        "summary": " \n Possible values are: <li><code> UNKNOWN -  Illegal default value, exception will be thrown if used\n <\/code><\/li><li><code> GOOGLE_ADS <\/code><\/li><li><code> GOOGLE_ANALYTICS <\/code><\/li><li><code> YANDEX_METRICA <\/code><\/li><li><code> FACEBOOK_PIXEL <\/code><\/li><li><code> GOOGLE_TAG_MANAGER <\/code><\/li>",
+        "links": [],
+        "examples": []
+      },
+      "members": [],
+      "enum":       [
+        "UNKNOWN",
+        "GOOGLE_ADS",
+        "GOOGLE_ANALYTICS",
+        "YANDEX_METRICA",
+        "FACEBOOK_PIXEL",
+        "GOOGLE_TAG_MANAGER"
+      ],
+      "extra": {},
+      "labels": []
+    }
+  ],
+  "extra": {"artifactId": "com.wixpress.wix-html-live-site-data-webapp"}
+}
