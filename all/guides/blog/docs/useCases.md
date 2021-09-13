@@ -21,7 +21,7 @@ curl 'http://www.wixapis.com/blog/v3/posts/slugs/my-vacation' -H 'Content-Type: 
 
 An example response to both [Get Post](https://dev.wix.com/api/rest/community/blog/post/get-post) and [Get Post by Slug](https://dev.wix.com/api/rest/community/blog/post/get-post-by-slug) will look something like this:
 
-```
+```json
 {
   "post": {
     "id": "894a58a2-dc75-422d-9ca6-00a489750dfd",
@@ -68,7 +68,7 @@ curl 'http://www.wixapis.com/blog/v3/posts/894a58a2-dc75-422d-9ca6-00a489750dfd/
 
 The response will look something like this:
 
-```
+```json
 {
   "metrics": {
     "comments": 5,
@@ -92,7 +92,7 @@ curl 'http://www.wixapis.com/blog/v3/posts?categoryIds=5f2bcaa5940a02003488af3e'
 
 An example response to the call above will look something like this:
 
-```
+```json
 {
   "posts": [
     {
@@ -147,7 +147,7 @@ curl 'https://www.wixapis.com/blog/v3/posts/query' --data-binary '{"fieldsToIncl
 
 The response we got looked like this:
 
-```
+```json
 {
   "posts": [
     {
@@ -213,14 +213,14 @@ curl 'http://www.wixapis.com/blog/v3/categories/894a58a2-dc75-422d-9ca6-10a48975
 
 The response will contain a category object:
 
-```
+```json
 {
   "category": {
     "id": "894a58a2-dc75-422d-9ca6-10a489750dfd",
     "label": "Summer",
     "postCount": 17,
     "description": "Posts about my summer",
-    "title": Summer,
+    "title": "Summer",
     "rank": 1,
     "language": "en",
     "translationId": "111a58a2-dc75-422d-9ca6-00a489750dfd"
@@ -242,7 +242,7 @@ curl 'http://www.wixapis.com/blog/v3/categories' -H 'Content-Type: application/j
 
 The response will be an array of the retrieved categories:
 
-```
+```json
 {
   "categories": [
     {
@@ -304,7 +304,7 @@ curl 'https://www.wixapis.com/blog/v3/categories/query' --data-binary '{"fieldsT
 
 The response will be an array of the categories that passed the query:
 
-```
+```json
 {
   "categories": [
   {
@@ -316,7 +316,7 @@ The response will be an array of the categories that passed the query:
       "path": "/blog/categories/summer"
     },
     "description": "Posts about my summer",
-    "title": Summer,
+    "title": "Summer",
     "rank": 1,
     "language": "en",
     "translationId": "111a58a2-dc75-422d-9ca6-00a489750dfd"
@@ -328,3 +328,140 @@ The response will be an array of the categories that passed the query:
   }
 }
 ```
+
+## Tag API
+
+#### Retrieve single tag
+Single tag can be fetched either by id, slug or label.
+
+To fetch tag by id use [Get Tag](https://dev.wix.com/api/rest/community/blog/tag/get-tag) endpoint:
+```
+curl \
+'http://www.wixapis.com/blog/v3/tags/6d72a3bb-053c-4de5-a897-5ef6be30b1b0' \
+-H 'Content-Type: application/json' \
+-H 'Authorization: <AUTH>'
+```
+[Get Tag By Label](https://dev.wix.com/api/rest/community/blog/tag/get-tag-by-label) endpoint can be used to fetch tag
+when the label is known:
+```
+curl \
+  'http://www.wixapis.com/blog/v3/tags/labels/vacation' \
+  -H 'Content-Type: application/json' \
+  -H 'Authorization: <AUTH>'
+```
+
+And to fetch tag using slug use [Get Tag By Slug](https://dev.wix.com/api/rest/community/blog/tag/get-tag-by-slug):
+```
+curl \
+  'http://www.wixapis.com/blog/v3/tags/slugs/vacation' \
+  -H 'Content-Type: application/json' \
+  -H 'Authorization: <AUTH>'
+```
+
+The response structure is the same for all three request which is a single tag object:
+```json
+{
+  "tag": {
+    "id": "6d72a3bb-053c-4de5-a897-5ef6be30b1b0",
+    "label": "vacation",
+    "slug": "vacation",
+    "createdDate": "2021-08-13T08:58:20.145Z",
+    "updatedDate": "2021-08-13T08:58:20.145Z",
+    "publicationCount": 2,
+    "postCount": 1,
+    "language": "en"
+  }
+}
+```
+
+#### Retrieving multiple tags
+To get a multiple tags, use [Query Tags](https://dev.wix.com/api/rest/community/blog/tag/query-tags) endpoint.
+
+In the example below we're going to request all tags that have a label starting with letter "v":
+
+```
+curl 'https://www.wixapis.com/blog/v2/tags/query' --data-binary '{"filter":{"label":{"$startsWith": "v"}}}' -H 'Content-Type: application/json' -H 'Authorization: <AUTH>'
+```
+
+The response will be an array of the tags that passed the query:
+```json
+{
+    "tags": [
+        {
+            "id": "43b7a30f-ca8a-4678-84c4-0bab5e3ebf63",
+            "label": "vacation",
+            "slug": "vacation",
+            "createdDate": "2021-06-21T08:27:09.764Z",
+            "updatedDate": "2021-06-21T08:27:09.764Z",
+            "publicationCount": 0,
+            "postCount": 1,
+            "language": "en"
+        },
+        {
+            "id": "efd1a67d-59b8-4c1c-9ef1-1275e053a47b",
+            "label": "vaccine",
+            "slug": "vaccine",
+            "createdDate": "2021-06-21T08:04:23.726Z",
+            "updatedDate": "2021-06-21T08:04:23.726Z",
+            "publicationCount": 5,
+            "postCount": 8,
+            "language": "en"
+        }
+    ],
+    "metaData": {
+        "count": 2,
+        "offset": 0,
+        "total": 2
+    }
+}
+```
+## Publication Stats API
+#### Get Total Publications
+Retrieves total publication count by given language. For example to get total count for publications written in english language use request: 
+```
+curl 'www.wixapis.com/blog/v2/stats/publications/total?language=en' \
+    -H 'Content-Type: application/json' \
+    -H 'Authorization: <AUTH>'
+```
+The response will be a json object with `total` field which represents total publication count for given language:
+```json
+{ "total": 9 }
+```
+`language` parameter is optional and when is not present publication count for all languages will be present
+
+#### Query Publications Count
+Retrieves the number of posts per month published within a specified time span. For example to retrieve statistics for publications
+in english language for last 3 months starting from `2018-11-01` ordered by oldest month first use request:
+
+```
+curl --request POST 'http://social-blog.wix.com/_api/communities-blog-node-api/v2/stats/publications/count' \
+    --header 'Authorization: <AUTH>' \
+    --header 'Content-Type: application/json' \
+    --data-raw '{
+                  "rangeStart": "2018-11-01",
+                  "order": "OLDEST",
+                  "months": 3,
+                  "language": "en"
+                }'
+```
+The response will be a json object with `stats` array field where each entry represents statistic of publication in english language count for a single month 
+```json
+{ "stats": [
+    {
+    "periodStart": "2018-11-01T00:00:00.000Z",
+    "publicationsCount": 1
+  },
+    {
+    "periodStart": "2018-12-01T00:00:00.000Z",
+    "publicationsCount": 2
+  },
+    {
+    "periodStart": "2019-01-01T00:00:00.000Z",
+    "publicationsCount": 2
+  }
+]} 
+```
+**This endpoint calculates statistics from first day of a month ignoring days value in period start field.**  
+If `periodStart` value is set to `2018-11-10` and `months` value is set to `1` 
+the day value is ignored and statistic are returned for one month from
+`2018-11-01` until `2018-11-30` and not between `2018-11-10` and `2018-12-10`.
